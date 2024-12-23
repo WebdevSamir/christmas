@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Wishes</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url("merry.jpg") no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            margin-top: 100px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 15px 0;
+        }
+
+        .images {
+            margin-top: 20px;
+        }
+
+        .images img {
+            width: 150px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .snowflake {
+            position: absolute;
+            color: white;
+            font-size: 1.5em;
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) translateX(0);
+            }
+            100% {
+                transform: translateY(800px) translateX(100px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Merry Christmas!</h1>
+        <p id="wish"></p>
+        <div class="images">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc8N-ZtGVC1HqtmPVZQvnkVwFFlsG1F_DG5w&s">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx8_BXFcbTzw0W6SHIZKUtSVHpMpK6yG0OlQ&s">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBpsLtoqGdGr0ayE9poSYG8Tmge--6vByPAg&s">
+        </div>
+    </div>
+
+    <script>
+        // Function to get query parameters
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                to: params.get('to') || 'Samir Aryan',
+                from: params.get('from') || 'Bishal Mandal',
+            };
+        }
+
+        // Extract the query parameters
+        const { to, from } = getQueryParams();
+
+        // Display the message
+        const wishElement = document.getElementById('wish');
+        wishElement.innerHTML = `Dear <strong>${to}</strong>,<br> Wishing you a joyous Christmas! <br> From, <strong>${from}</strong>`;
+
+        // Add animated snowflakes
+        for (let i = 0; i < 30; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '&#10052;';
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.animationDuration = (Math.random() * 3 + 7) + 's';
+            snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            document.body.appendChild(snowflake);
+        }
+    </script>
+</body>
+</html>
